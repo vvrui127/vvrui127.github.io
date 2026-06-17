@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="把鼠标移入下方区域并快速移动，文字会像蛇一样变成曲线扭动！           const container &#x3D; document.getElementById(&#39;snake-container&#39;); const canvas &#x3D; document.getElementById(&#39;snakeCanvas&#39;); const ctx &#x3D; canvas.getContext(&#39;2d&#39;);  &#x2F;&#x2F; 让画">
+<meta property="og:type" content="website">
+<meta property="og:title" content="文字曲线动效">
+<meta property="og:url" content="http://example.com/snake-text/index.html">
+<meta property="og:site_name" content="My Blog">
+<meta property="og:description" content="把鼠标移入下方区域并快速移动，文字会像蛇一样变成曲线扭动！           const container &#x3D; document.getElementById(&#39;snake-container&#39;); const canvas &#x3D; document.getElementById(&#39;snakeCanvas&#39;); const ctx &#x3D; canvas.getContext(&#39;2d&#39;);  &#x2F;&#x2F; 让画">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-06-17T02:20:00.000Z">
+<meta property="article:modified_time" content="2026-06-17T02:12:52.180Z">
+<meta property="article:author" content="wr">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/snake-text/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"http://example.com/snake-text/index.html","path":"snake-text/index.html","title":"文字曲线动效"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>文字曲线动效 | My Blog
+</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">My Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一些小事</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">wr</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">文字曲线动效
+</h1>
+
+<div class="post-meta-container">
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <p>把鼠标移入下方区域并快速移动，文字会像蛇一样变成曲线扭动！</p>
+
+<div id="snake-container" style="width: 100%; height: 500px; border: 1px solid #ddd; background: #1a1a1a; position: relative; overflow: hidden; cursor: crosshair;">
+    <canvas id="snakeCanvas"></canvas>
+</div>
+
+<script>
+const container = document.getElementById('snake-container');
+const canvas = document.getElementById('snakeCanvas');
+const ctx = canvas.getContext('2d');
+
+// 让画布大小等于容器大小
+canvas.width = container.clientWidth;
+canvas.height = 500;
+
+// 你想要展示的一串字符
+const text = "HELLO·HEXO·NEXT·BLOG·CREATIVE·ANIMATION···";
+const textArray = text.split("");
+
+// 鼠标位置历史记录（贪吃蛇的身体路径）
+let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+let dots = [];
+const spacing = 15; // 字母之间的间距
+
+// 初始化蛇的初始身体
+for (let i = 0; i < textArray.length * spacing; i++) {
+    dots.push({ x: mouse.x, y: mouse.y });
+}
+
+// 监听鼠标在容器内的移动
+container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+});
+
+// 核心动画循环
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // 头部跟随鼠标
+    let head = dots[0];
+    head.x += (mouse.x - head.x) * 0.15; // 缓动系数，越大跟随越紧，越小越飘逸
+    head.y += (mouse.y - head.y) * 0.15;
+    
+    // 身体的每一个点跟随前一个点，形成蛇形曲线
+    for (let i = dots.length - 1; i > 0; i--) {
+        let current = dots[i];
+        let next = dots[i - 1];
+        current.x += (next.x - current.x) * 0.6;
+        current.y += (next.y - current.y) * 0.6;
+    }
+    
+    // 绘制文字
+    ctx.fillStyle = '#00ffcc'; // 霓虹绿字体颜色，可自由修改
+    ctx.font = 'bold 18px Courier New';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    
+    textArray.forEach((char, index) => {
+        // 根据间距算出每个字母应该在路径的哪一个位置
+        let dotIndex = index * spacing;
+        if (dotIndex < dots.length) {
+            let p = dots[dotIndex];
+            
+            // 计算旋转角度，让字母面朝前进的方向
+            let nextP = dots[Math.max(0, dotIndex - 1)];
+            let angle = Math.atan2(nextP.y - p.y, nextP.x - p.x);
+            
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(angle); // 沿曲线方向旋转字符
+            ctx.fillText(char, 0, 0);
+            ctx.restore();
+        }
+    });
+    
+    requestAnimationFrame(animate);
+}
+
+// 启动动画
+animate();
+
+// 窗口大小改变时重置画布
+window.addEventListener('resize', () => {
+    canvas.width = container.clientWidth;
+});
+</script>
+      </div>
+      
+      
+      
+    </div>
+
+    
+    
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">wr</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
